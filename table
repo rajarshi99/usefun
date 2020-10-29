@@ -1,0 +1,19 @@
+#!/usr/bin/awk -f
+
+{ for(i=1; i<=NF; i++) ele[(NR-1)*NF+i] = $i }
+# File parsed and stored in array
+
+END {
+	if(save)
+		printf "set term %s\nset output 'plot.%s'\n", save, save
+	printf "plot "
+	for(i=2; i < NF; i++)
+		printf "'-' %s title '%d', ", spec, i
+	printf "'-' %s title '%d'\n", spec, NF
+	#Gnuplot command given
+
+	for(i=2; i <=NF; i++){
+		for(j=0; j<NR; j++) print ele[j*NF + 1], ele[j*NF + i]
+		print "e"
+	}
+}
