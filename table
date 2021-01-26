@@ -1,5 +1,7 @@
 #!/usr/bin/awk -f
 
+#optional args save, spec
+
 { for(i=1; i<=NF; i++) ele[(NR-1)*NF+i] = $i }
 # File parsed and stored in array
 
@@ -10,7 +12,7 @@ END {
 	for(i=2; i < NF; i++)
 		printf "'-' %s title '%d', ", spec, i
 	printf "'-' %s title '%d'\n", spec, NF
-	#Gnuplot command given
+	#gnuplot commands given
 
 	for(i=2; i <=NF; i++){
 		for(j=0; j<NR; j++) print ele[j*NF + 1], ele[j*NF + i]
