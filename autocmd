@@ -1,0 +1,5 @@
+#!/bin/sh
+
+file=$1 ; shift
+
+while inotifywait -e attrib $file ; do $@ ; done
