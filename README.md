@@ -10,10 +10,11 @@ From the shell the command
 ./autocmd ttt.tex pdflatex ttt.tex
 ```
 would mean to wait for `ttt.tex` to be modified
-and then to execute
+to execute
 ```sh
 pdflatex ttt.tex
 ```
+And then go back to waiting.
 
 Note
 * Uses `inotifywait`.
